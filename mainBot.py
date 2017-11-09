@@ -4,7 +4,7 @@ from Bot import Bot
 
 
 
-neobot = telepot.Bot("409078068:AAHJyyAOYOv7WkOqqLOxFhGHNn81nHoKxZs")
+neobot = telepot.Bot("485412513:AAGm7pe6DVEO-btyDcRwzjMNQBI-7zdo-SU")
 
 neobot = Bot(neobot)
 

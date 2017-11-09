@@ -101,7 +101,12 @@ corpusItemsService = [0] * len(data['servicos'])
 # # print data['servicos']
 for index, item in enumerate(data['servicos']):
     corpusItemsService[index] = item['nome']
-# corpusItemsService
+
+precos = {}
+for item in data['servicos']:
+    precos[item['nome']] = item['preco']
+
+# print(precos)
 
 
 
@@ -144,4 +149,7 @@ def searchCategory(sentence):
     else:
         return candidatesName
 
+
+print(services)
+# print(data['servicos'])
 # # print searchCategory('quero cortar o cabelo')
