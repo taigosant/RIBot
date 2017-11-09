@@ -1,0 +1,160 @@
+{
+	"loja": {
+		"nome": "Salao Sempre Bela",
+		"categorias": [{
+				"id": 0,
+				"nome": "cabelo"
+			},
+			{
+				"id": 1,
+				"nome": "UNHAS/PES"
+			},
+			{
+				"id": 2,
+				"nome": "SOBRANCELHA"
+			}, {
+				"id": 3,
+				"nome": "ESTÉTICA/SAÚDE"
+			},
+			{
+				"id": 4,
+				"nome": "DEPILAÇÃO"
+			},
+			{
+				"id": 5,
+				"nome": "MAQUIAGEM DEFINITIVA"
+			}
+		]
+	},
+	"servicos": [{
+			"categoria": 0,
+			"nome": "Escova",
+			"preco": "50"
+		},
+		{
+			"categoria": 0,
+			"nome": "Corte (Masculino e Feminino)",
+			"preco": "50"
+		},
+		{
+			"categoria": 0,
+			"nome": "Alongamento",
+			"preco": "50"
+		},
+		{
+			"categoria": 0,
+			"nome": "Escova Inteligente",
+			"preco": "50"
+		},
+		{
+			"categoria": 0,
+			"nome": "Selagem",
+			"preco": "50"
+		},
+		{
+			"categoria": 0,
+			"nome": "Escova Definitiva",
+			"preco": "50"
+		},
+		{
+			"categoria": 0,
+			"nome": "Coloração",
+			"preco": "50"
+		},
+		{
+			"categoria": 0,
+			"nome": "Mechas",
+			"preco": "50"
+		},
+		{
+			"categoria": 0,
+			"nome": "Tratamentos",
+			"preco": "50"
+		},
+		{
+			"categoria": 1,
+			"nome": "Podologia",
+			"preco": "50"
+		},
+		{
+			"categoria": 1,
+			"nome": "Pedicure e Manicure",
+			"preco": "50"
+		},
+		{
+			"categoria": 1,
+			"nome": "Unha de Fibra/Gel",
+			"preco": "50"
+		},
+		{
+			"categoria": 1,
+			"nome": "Esmaltes Especiais",
+			"preco": "50"
+		},
+		{
+			"categoria": 1,
+			"nome": "Unhas Postiças",
+			"preco": "50"
+		},
+		{
+			"categoria": 1,
+			"nome": "Reflexologia",
+			"preco": "50"
+		},
+		{
+			"categoria": 2,
+			"nome": "Linha",
+			"preco": "50"
+		},
+		{
+			"categoria": 2,
+			"nome": "Pinça",
+			"preco": "50"
+		},
+		{
+			"categoria": 2,
+			"nome": "Cera",
+			"preco": "50"
+		},
+		{
+			"categoria": 3,
+			"nome": "Banho de lua",
+			"preco": "50"
+		},
+		{
+			"categoria": 3,
+			"nome": "Massagens",
+			"preco": "50"
+		},
+		{
+			"categoria": 3,
+			"nome": "Limpeza de pele",
+			"preco": "50"
+		},
+		{
+			"categoria": 3,
+			"nome": "Tratamentos para Redução de Medidas",
+			"preco": "50"
+		},
+		{
+			"categoria": 4,
+			"nome": "Com cera",
+			"preco": "50"
+		},
+		{
+			"categoria": 4,
+			"nome": "Egipcia ",
+			"preco": "50"
+		},
+		{
+			"categoria": 5,
+			"nome": "Micropigmentação",
+			"preco": "50"
+		},
+		{
+			"categoria": 5,
+			"nome": "Despigmentação",
+			"preco": "50"
+		}
+	]
+}

@@ -1,0 +1,297 @@
+{
+	"loja": {
+		"nome": "Salao Rainha",
+		"categorias": [{
+				"id": 0,
+				"nome": "cabelo"
+			},
+			{
+				"id": 1,
+				"nome": "UNHAS/PES"
+			},
+			{
+				"id": 2,
+				"nome": "SOBRANCELHA"
+			}, {
+				"id": 3,
+				"nome": "CORPO"
+			},
+			{
+				"id": 4,
+				"nome": "ROSTO"
+			},
+            {
+				"id": 5,
+				"nome": "DEPILAÇÃO"
+			}
+
+		]
+	},
+	"servicos": [{
+			"categoria": 0,
+			"nome": "Escova",
+			"preco": "50"
+		},
+		{
+			"categoria": 0,
+			"nome": "Corte (Masculino e Feminino)",
+			"preco": "50"
+		},
+		{
+			"categoria": 0,
+			"nome": "Lavar e Secar",
+			"preco": "50"
+		},
+		{
+			"categoria": 0,
+			"nome": "Corte + Escova",
+			"preco": "50"
+		},
+		{
+			"categoria": 0,
+			"nome": "Penteado",
+			"preco": "50"
+		},
+		{
+			"categoria": 0,
+			"nome": "Tonalização",
+			"preco": "50"
+		},
+		{
+			"categoria": 0,
+			"nome": "Coloração",
+			"preco": "50"
+		},
+		{
+			"categoria": 0,
+			"nome": "Luzes",
+			"preco": "50"
+		},
+		{
+			"categoria": 0,
+			"nome": "Mechas",
+			"preco": "50"
+		},
+        {
+			"categoria": 0,
+			"nome": "Mega Hair",
+			"preco": "50"
+		},
+        {
+			"categoria": 0,
+			"nome": "Nutrição",
+			"preco": "50"
+		},
+        {
+			"categoria": 0,
+			"nome": "Hidratação",
+			"preco": "50"
+		},
+        {
+			"categoria": 0,
+			"nome": "Cauterização",
+			"preco": "50"
+		},
+		{
+			"categoria": 1,
+			"nome": "Francesinha",
+			"preco": "50"
+		},
+		{
+			"categoria": 1,
+			"nome": "Pedicure e Manicure",
+			"preco": "50"
+		},
+		{
+			"categoria": 1,
+			"nome": "Unha de Gel",
+			"preco": "50"
+		},
+		{
+			"categoria": 1,
+			"nome": "Pedicure Decorada",
+			"preco": "50"
+		},
+		{
+			"categoria": 1,
+			"nome": "Unhas Postiças",
+			"preco": "50"
+		},
+		{
+			"categoria": 1,
+			"nome": "Alongamento de Unha",
+			"preco": "50"
+		},
+        {
+			"categoria": 1,
+			"nome": "Unhas de Acrygel",
+			"preco": "50"
+		},
+        {
+			"categoria": 1,
+			"nome": "Manutenção",
+			"preco": "50"
+		},
+        {
+			"categoria": 1,
+			"nome": "Reposição",
+			"preco": "50"
+		},
+        {
+			"categoria": 1,
+			"nome": "Unha de Porcelana",
+			"preco": "50"
+		},
+		{
+			"categoria": 2,
+			"nome": "Sobrancelha de Henna",
+			"preco": "50"
+		},
+		{
+			"categoria": 2,
+			"nome": "Sobrancelha Geométrica",
+			"preco": "50"
+		},
+		{
+			"categoria": 2,
+			"nome": "Design de Sobrancelha",
+			"preco": "50"
+		},
+        {
+			"categoria": 2,
+			"nome": "Sobrancelha",
+			"preco": "50"
+		},
+        
+		{
+			"categoria": 3,
+			"nome": "Drenagem Linfática",
+			"preco": "50"
+		},
+		{
+			"categoria": 3,
+			"nome": "Massagem Modeladora",
+			"preco": "50"
+		},
+		{
+			"categoria": 3,
+			"nome": "Limpeza de costas",
+			"preco": "50"
+		},
+		{
+			"categoria": 3,
+			"nome": "Massagem antiestresse",
+			"preco": "50"
+		},
+        {
+			"categoria": 3,
+			"nome": "Endermoterapia",
+			"preco": "50"
+		},
+		{
+			"categoria": 4,
+			"nome": "Laser",
+			"preco": "50"
+		},
+		{
+			"categoria": 4,
+			"nome": "Peeling Químico",
+			"preco": "50"
+		},
+        {
+			"categoria": 4,
+			"nome": "Peeling de Cristal",
+			"preco": "50"
+		},
+        {
+			"categoria": 4,
+			"nome": "Maquiagem",
+			"preco": "50"
+		},
+        {
+			"categoria": 4,
+			"nome": "Limpeza de Pele",
+			"preco": "50"
+		},
+        {
+			"categoria": 4,
+			"nome": "Tratamento para Acne",
+			"preco": "50"
+		},
+        {
+			"categoria": 4,
+			"nome": "Hidratação Facial",
+			"preco": "50"
+		},
+        {
+			"categoria": 4,
+			"nome": "Drenagem Facial",
+			"preco": "50"
+		},
+        {
+			"categoria": 4,
+			"nome": "Massagem Facial",
+			"preco": "50"
+		},
+        {
+			"categoria": 4,
+			"nome": "Tintura de Cílios",
+			"preco": "50"
+		},
+        {
+			"categoria": 4,
+			"nome": "Maquiagem Definitiva",
+			"preco": "50"
+		},
+        {
+			"categoria": 4,
+			"nome": "Micropuntura (Olhos, Boca, Testa, Pacote Rosto)",
+			"preco": "50"
+		},
+        {
+			"categoria": 5,
+			"nome": "Perna Inteira",
+			"preco": "50"
+		},
+        {
+			"categoria": 5,
+			"nome": "Meia Perna",
+			"preco": "50"
+		},
+        {
+			"categoria": 5,
+			"nome": "Meia Perna",
+			"preco": "50"
+		},
+        {
+			"categoria": 5,
+			"nome": "Virilha",
+			"preco": "50"
+		},
+        {
+			"categoria": 5,
+			"nome": "Axilas",
+			"preco": "50"
+		},
+        {
+			"categoria": 5,
+			"nome": "Buço",
+			"preco": "50"
+		},
+        {
+			"categoria": 5,
+			"nome": "Peito",
+			"preco": "50"
+		},
+        {
+			"categoria": 5,
+			"nome": "Costas",
+			"preco": "50"
+		},
+        {
+			"categoria": 5,
+			"nome": "Barba",
+			"preco": "50"
+		}
+	]
+}

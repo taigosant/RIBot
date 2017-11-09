@@ -1,0 +1,197 @@
+{
+	"loja": {
+		"nome": "Salao Top",
+		"categorias": [{
+				"id": 0,
+				"nome": "cabelo"
+			},
+			{
+				"id": 1,
+				"nome": "UNHAS/PES"
+			}, {
+				"id": 2,
+				"nome": "ESTÉTICA/SAÚDE"
+			},
+			{
+				"id": 3,
+				"nome": "DEPILAÇÃO"
+			}
+		]
+	},
+	"servicos": [{
+			"categoria": 0,
+			"nome": "Escova",
+			"preco": "50"
+		},
+		{
+			"categoria": 0,
+			"nome": "Corte (Masculino e Feminino)",
+			"preco": "50"
+		},
+		{
+			"categoria": 0,
+			"nome": "Coloração",
+			"preco": "50"
+		},
+		{
+			"categoria": 0,
+			"nome": "Mechas",
+			"preco": "50"
+		},
+        {
+			"categoria": 0,
+			"nome": "Secagem",
+			"preco": "50"
+		},
+        {
+			"categoria": 0,
+			"nome": "Higienização",
+			"preco": "50"
+		},
+        {
+			"categoria": 0,
+			"nome": "Prancha",
+			"preco": "50"
+		},
+        {
+			"categoria": 0,
+			"nome": "Baby Lise",
+			"preco": "50"
+		},
+        {
+			"categoria": 0,
+			"nome": "Hidratação",
+			"preco": "50"
+		},
+        {
+			"categoria": 0,
+			"nome": "Cauterização",
+			"preco": "50"
+		},
+        {
+			"categoria": 0,
+			"nome": "Relaxamento",
+			"preco": "50"
+		},
+        {
+			"categoria": 0,
+			"nome": "Aplicação",
+			"preco": "50"
+		},
+        {
+			"categoria": 0,
+			"nome": "Tonalizante",
+			"preco": "50"
+		},
+        {
+			"categoria": 0,
+			"nome": "Penteado",
+			"preco": "50"
+		},
+		{
+			"categoria": 1,
+			"nome": "Pedicure e Manicure",
+			"preco": "50"
+		},
+		{
+			"categoria": 1,
+			"nome": "Unha de AcryGel",
+			"preco": "50"
+		},
+        {
+			"categoria": 1,
+			"nome": "Unha de Silicone",
+			"preco": "50"
+		},
+        {
+			"categoria": 1,
+			"nome": "Francesinha",
+			"preco": "50"
+		},
+	    {
+			"categoria": 1,
+			"nome": "Desenho",
+			"preco": "50"
+		},
+		{
+			"categoria": 1,
+			"nome": "Unhas Postiças",
+			"preco": "50"
+		},
+		{
+			"categoria": 2,
+			"nome": "Limpeza de pele",
+			"preco": "50"
+		},
+		{
+			"categoria": 2,
+			"nome": "Massagem Corporal",
+			"preco": "50"
+		},
+		{
+			"categoria": 2,
+			"nome": "Drenagem",
+			"preco": "50"
+		},
+        {
+			"categoria": 2,
+			"nome": "Banho Dourado",
+			"preco": "50"
+		},
+        {
+			"categoria": 2,
+			"nome": "Micropigmentação a laser",
+			"preco": "50"
+		},
+        {
+			"categoria": 2,
+			"nome": "Jet Bronze",
+			"preco": "50"
+		},
+		{
+			"categoria": 3,
+			"nome": "Buço",
+			"preco": "50"
+		},
+		{
+			"categoria": 3,
+			"nome": "Nariz",
+			"preco": "50"
+		},
+		{
+			"categoria": 3,
+			"nome": "Queixo",
+			"preco": "50"
+		},
+		{
+			"categoria": 3,
+			"nome": "Rosto",
+			"preco": "50"
+		},
+        {
+			"categoria": 3,
+			"nome": "Sobrancelha",
+			"preco": "50"
+		},
+        {
+			"categoria": 3,
+			"nome": "Sobrancelha de henna",
+			"preco": "50"
+		},
+        {
+			"categoria": 3,
+			"nome": "Axila",
+			"preco": "50"
+		},
+        {
+			"categoria": 3,
+			"nome": "Perna",
+			"preco": "50"
+		},
+        {
+			"categoria": 3,
+			"nome": "Virilha",
+			"preco": "50"
+		}
+	]
+}
