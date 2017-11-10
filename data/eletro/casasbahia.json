@@ -1,0 +1,179 @@
+{
+  "loja": {
+    "nome": "Casas Bahia,",
+    "categorias": [
+      {
+        "id": "0",
+        "nome": "TVs e Acessórios"
+      },
+      {
+        "id": "1",
+        "nome": "Informática"
+      },
+      {
+        "id": "2",
+        "nome": "Eletrodomésticos"
+      },
+      {
+        "id": "3",
+        "nome": "Celulares e Telefones"
+      },
+      {
+        "id": "4",
+        "nome": "Esporte e Lazer"
+      }
+    ],
+    "servicos": [
+      {
+        "categoria": "0",
+        "nome": "TV LED 49\" Full HD LG 49LH5150 com Conversor Digital Integrado, Painel IPS, Game TV, Entrada HDMI e USB",
+        "preco": "R$ 1.299,00"
+      },
+      {
+        "categoria": "0",
+        "nome": "Smart TV LED 58\" Ultra HD 4K LG 58UF8300 com Sistema webOS, Wi-Fi, Nano Spectrum, Entradas HDMI e USB e Controle Smart Magic",
+        "preco": "R$ 3.999,00"
+      },
+      {
+        "categoria": "0",
+        "nome": "TV Monitor LED 23.6\" HD LG 24MT48DF-PS com Conversor Digital, Gaming Mode, Time Machine, Entrada HDMI e USB",
+        "preco": "R$ 599,00"
+      },
+      {
+        "categoria": "0",
+        "nome": "Smart TV 3D LED 65\" Ultra HD 4K LG 65UF9500 com Sistema webOS, Wi-Fi, Nano Spectrum, Entradas HDMI e USB, Controle Smart Magic e 4 Óculos 3D",
+        "preco": "R$ 8.499,00"
+      },
+      {
+        "categoria": "0",
+        "nome": "Home Theater HT-09 5.1 Canais, Entradas HDMI/USB/Auxiliar,Rádio FM, Função Karaokê + Microfone, 420W RMS - Mondial",
+        "preco": "R$ 459,00"
+      },
+      {
+        "categoria": "0",
+        "nome": "DVD Player Mondial D-15 com Karaokê, Entrada USB e Ripping",
+        "preco": "R$ 100,99"
+      },
+      {
+        "categoria": "1",
+        "nome": "Notebook Dell Inspiron I14-5468-D20P com Intel® Core™ i5-7200U, 4GB, 1TB, Leitor de Cartão, HDMI, Wireless, Bluetooth, Webcam, LED 14'' e Linux",
+        "preco": "R$ 2.309,00"
+      },
+      {
+        "categoria": "1",
+        "nome": "Multifuncional HP DeskJet Ink Advantage Ultra 4729 Wireless + 3 Cartuchos de Tinta Preto + 3 Tricolor HP Ink Advantage Ultra 46",
+        "preco": "R$ 699,00"
+      },
+      {
+        "categoria": "1",
+        "nome": "Notebook Dell Inspiron I14-5452-B03P com Intel® Pentium® Quad Core, 4GB, 500GB, Leitor de Cartões, HDMI, Wireless, Bluetooth, LED 14\" e Windows 10",
+        "preco": "R$ 1.699,00"
+      },
+      {
+        "categoria": "1",
+        "nome": "Roteador e Repetidor D-Link DIR-615 Wireless N 300Mbps com 2 Antenas 5dBi",
+        "preco": "R$ 76,90"
+      },
+      {
+        "categoria": "1",
+        "nome": "Notebook 2 em 1 Touch Dell Inspiron I11-3168-A10 com Intel® Pentium® Quad Core, 4GB, 500GB, Leitor de Cartões, HDMI, Bluetooth, LED 11.6 e Windows 10",
+        "preco": "R$ 1.799,00"
+      },
+      {
+        "categoria": "1",
+        "nome": "Notebook Dell Inspiron I14-5452-B03P com Intel® Pentium® Quad Core, 4GB, 500GB, Leitor de Cartões, HDMI, Wireless, Bluetooth, LED 14\" e Windows 10",
+        "preco": "R$ 1.699,00"
+      },
+      {
+        "categoria": "2",
+        "nome": "Lavadora de Roupas Brastemp 11 kg BWJ11AB com Turbo Performance – Branca",
+        "preco": "R$ 1.299,00"
+      },
+      {
+        "categoria": "2",
+        "nome": "Refrigerador Electrolux Duplex DC35A 260L - Branco",
+        "preco": "R$ 1.189,00"
+      },
+      {
+        "categoria": "2",
+        "nome": "Fogão Consul 4 Bocas CFO4NAR com Acendimento Automático - Inox",
+        "preco": "R$ 649,00"
+      },
+      {
+        "categoria": "2",
+        "nome": "Forno de Micro-ondas Electrolux MI41S com Painel Integrado - 31L",
+        "preco": "R$ 649,00"
+      },
+      {
+        "categoria": "2",
+        "nome": "Cooktop a Gás Philco 5 Bocas Chef 5 Bisote Bivolt – Preto",
+        "preco": "R$ 399,00"
+      },
+      {
+        "categoria": "2",
+        "nome": "Forno a Gás de Embutir Brastemp 84 Litros BOA84 Preto – 220V",
+        "preco": "R$ 1.299,00"
+      },
+      {
+        "categoria": "3",
+        "nome": "Smartphone Samsung Galaxy S7 Dourado com 32GB, Tela 5.1\", Android 6.0, 4G, Câmera 12MP e Processador Octa-Core",
+        "preco": "R$ 1.943,00"
+      },
+      {
+        "categoria": "3",
+        "nome": "iPhone 6s Apple com Tela 4,7” HD, 32GB, 3D Touch, iOS 9, Sensor Touch ID, Câmera iSight 12MP, Wi-Fi, 4G, GPS, Bluetooth e NFC - Rose",
+        "preco": "R$ 2.499,00"
+      },
+      {
+        "categoria": "3",
+        "nome": "Celular Lg T585 Preto com Dual Chip",
+        "preco": "R$ 269,99"
+      },
+      {
+        "categoria": "3",
+        "nome": "Telefone sem fio digital TS 40 ID Intelbras TS40ID Com Identificação de chamadas.",
+        "preco": "R$ 100,90"
+      },
+      {
+        "categoria": "3",
+        "nome": "Óculos de Realidade Virtual 3D Para Smartphone - Vr Box 2.0 Pmtec",
+        "preco": "R$ 47,01"
+      },
+      {
+        "categoria": "3",
+        "nome": "Carregador Universal Samsung Off-white",
+        "preco": "R$ 17,90"
+      },
+      {
+        "categoria": "4",
+        "nome": "Bicicleta Athor Aro 29 Android 21V Shimano - BRANCO",
+        "preco": "R$ 1.259,89"
+      },
+      {
+        "categoria": "4",
+        "nome": "Esteira Elétrica Polimet EP-1600 Dobrável Preta - Bivolt Esteira Polimet EP-1600",
+        "preco": "R$ R$ 929,00"
+      },
+      {
+        "categoria": "4",
+        "nome": "Piscina Redonda Bestway Fast Set 3.638L – Azul - Piscina Redonda Bestway Fast Set 3.638L – Azul",
+        "preco": "R$ 189,90"
+      },
+      {
+        "categoria": "4",
+        "nome": "Barraca de Camping Importada Para 5 Pessoas em Poliéster - Verde",
+        "preco": "R$ 299,90"
+      },
+      {
+        "categoria": "4",
+        "nome": "Mesa para Tênis de Mesa Klopf 31001 15mm - Azul",
+        "preco": "R$ 399,00"
+      },
+      {
+        "categoria": "4",
+        "nome": "Bola de Pebolim Klopf Branca - 6 Unidades",
+        "preco": "R$ 27,90"
+      }
+    ]
+  }
+}
