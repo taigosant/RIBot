@@ -5,151 +5,99 @@
 import json
 import numpy
 import nltk
-
-# from pprint import pprint
-
-
-# In[3]:
-
-
-with open('data/salao/04.json', 'r') as f:
-    data = json.load(f)
-
-
-
-corpusCategory = {}
-for item in data['loja']['categorias']:
-    # print item['nome']
-    corpusCategory[item['id']] = item['nome']    
-for item in data['servicos']:    
-    corpusCategory[item['categoria']] += " \n " +item['nome']
-# #     print item['nome']
-
-
-
-
-stopwords = nltk.corpus.stopwords.words('portuguese')
-
-
-
 from nltk.stem import RSLPStemmer
-# nltk.download()
-stemmer = RSLPStemmer()
-
-
-# In[9]:
-
-def stem_tokens(tokens, stemmer):
-    stemmed = []
-    for item in tokens:
-        stemmed.append(stemmer.stem(item))
-    return stemmed
-
-def tokenize(text):
-    tokens = nltk.word_tokenize(text)
-    stems = stem_tokens(tokens, stemmer)
-    return stems
-
-
-
-
 from sklearn.feature_extraction.text import TfidfVectorizer
-tfidf_vectorizer = TfidfVectorizer(analyzer='word', tokenizer=tokenize, stop_words= stopwords)
-
-
-
-tfidf_vectorizer.fit(corpusCategory.values())
-
-
-
-
-
-# print "Stop Words :5", tfidf_vectorizer.stop_words[:5]
-# print "Vocabulary [size]:", len(tfidf_vectorizer.vocabulary_)
-# print "Vocabulary:", tfidf_vectorizer.vocabulary_
-
-
-# ### Calculando o TF/IDF com TfidfTransformer
-
-# In[14]:
-
-
-tfidf_matrix = tfidf_vectorizer.transform(corpusCategory.values())
-# # print corpusCategory.values()
-# print tfidf_matrix.shape
-
-
-
-
 from sklearn.metrics.pairwise import cosine_similarity
 
 
+class Search(object):
+    def __init__(self, loja):
+        if loja == 'Bemol':
+            loja = 'data/eletro/bemol.json'
+        elif loja == 'Casas Bahia':
+            loja = 'data/eletro/casasbahia.json'
+        elif loja == 'Walmart':
+            loja = 'data/eletro/Walmart.json'
+        elif loja == 'Salao Sempre Bela':
+            loja = 'data/salao/02.json'
+        elif loja == 'Salao Top':
+            loja = 'data/salao/03.json'
+        elif loja == 'Salao Rainha':
+            loja = 'data/salao/03.json'
+
+        with open(loja, 'r') as f:
+            self.data = json.load(f)
+        self.corpusCategory = {}
+        for item in self.data['loja']['categorias']:
+            self.corpusCategory[item['id']] = item['nome']
+        for item in self.data['servicos']:
+            self.corpusCategory[item['categoria']] += " \n " +item['nome']
+
+        self.stemmer = RSLPStemmer()
+        self.stopwords = nltk.corpus.stopwords.words('portuguese')
+        self.tfidf_vectorizer = TfidfVectorizer(analyzer='word', tokenizer=self.tokenize, stop_words=self.stopwords)
+        self.tfidf_vectorizer.fit(self.corpusCategory.values())
+        self.tfidf_matrix = self.tfidf_vectorizer.transform(self.corpusCategory.values())
+
+        self.services = self.data['loja']['categorias']
+
+        self.corpusItemsService = [0] * len(self.data['servicos'])
+        # # print self.data['servicos']
+        for index, item in enumerate(self.data['servicos']):
+            self.corpusItemsService[index] = item['nome']
+
+        self.precos = {}
+        for item in self.data['servicos']:
+            self.precos[item['nome']] = item['preco']
+
+        self.tfidf_items = TfidfVectorizer(analyzer='word', tokenizer=self.tokenize, stop_words=self.stopwords)
+        self.tfidf_items.fit(self.corpusItemsService)
+
+        self.tfidf_items_matrix = self.tfidf_items.transform(self.corpusItemsService)
+
+        self.items_service = self.data['servicos']
 
 
-def rankingInput(model, matrix, sentence):
-    response = model.transform(sentence)
-    cosine_similarities  = cosine_similarity(response, matrix).flatten()
-    related_docs_indices = [i for i in cosine_similarities.argsort()[::-1]]
-    return [(index, cosine_similarities[index]) for index in related_docs_indices][0:10]
+    def stem_tokens(self, tokens, stemmer):
+        stemmed = []
+        for item in tokens:
+            stemmed.append(stemmer.stem(item))
+        return stemmed
+
+    def tokenize(self, text):
+        tokens = nltk.word_tokenize(text)
+        stems = self.stem_tokens(tokens, self.stemmer)
+        return stems
 
 
-
-services = data['loja']['categorias']
-
-
-corpusItemsService = [0] * len(data['servicos'])
-# # print data['servicos']
-for index, item in enumerate(data['servicos']):
-    corpusItemsService[index] = item['nome']
-
-precos = {}
-for item in data['servicos']:
-    precos[item['nome']] = item['preco']
-
-# print(precos)
+    def rankingInput(self, model, matrix, sentence):
+        response = model.transform(sentence)
+        cosine_similarities  = cosine_similarity(response, matrix).flatten()
+        related_docs_indices = [i for i in cosine_similarities.argsort()[::-1]]
+        return [(index, cosine_similarities[index]) for index in related_docs_indices][0:10]
 
 
-
-tfidf_items = TfidfVectorizer(analyzer='word', tokenizer=tokenize, stop_words= stopwords)
-tfidf_items.fit(corpusItemsService)
-
-
-# # print "Stop Words :5", tfidf_items.stop_words[:5]
-# # print "Vocabulary [size]:", len(tfidf_items.vocabulary_)
-# # print "Vocabulary:", tfidf_items.vocabulary_
-
-
-tfidf_items_matrix = tfidf_items.transform(corpusItemsService)
-# print tfidf_items_matrix.shape
-
-
-
-# # print raking
-items_service = data['servicos']
-
-
-def searchCategory(sentence):
-    ranking1 = rankingInput(model=tfidf_vectorizer, matrix=tfidf_matrix, sentence=[sentence])
-    # print ranking1
-    candidates = [x for x, y in ranking1 if y > 0]
-    candidatesName = [item['nome'] for item in services if item['id'] in candidates]
-    # print candidatesName
-    connectlist = [index for index, item in enumerate(data['servicos']) if item['categoria'] in candidates]
-    prodFilter = tfidf_items_matrix.todense()[[connectlist]]
-    ranking2 = rankingInput(model=tfidf_items, matrix=prodFilter, sentence=[sentence])
-    prods = []
-    # return "Acho que voce esta procurando por este servico: " + items_service[connectlist[raking2[0][0]]]['nome'] + ', custando R$: ' + items_service[connectlist[raking2[0][0]]]['preco']
-    for index, score in ranking2:
-        if score != 0:
-            nome = str(items_service[connectlist[index]]['nome'])
-            preco = str(items_service[connectlist[index]]['preco'])
-            prods.append((nome, preco))
-    if prods:
-        return prods
-    else:
-        return candidatesName
+    def searchCategory(self, sentence):
+        ranking1 = self.rankingInput(model=self.tfidf_vectorizer, matrix=self.tfidf_matrix, sentence=[sentence])
+        # print ranking1
+        candidates = [x for x, y in ranking1 if y > 0]
+        candidatesName = [item['nome'] for item in self.services if item['id'] in candidates]
+        # print candidatesName
+        connectlist = [index for index, item in enumerate(self.data['servicos']) if item['categoria'] in candidates]
+        prodFilter = self.tfidf_items_matrix.todense()[[connectlist]]
+        ranking2 = self.rankingInput(model=self.tfidf_items, matrix=prodFilter, sentence=[sentence])
+        prods = []
+        for index, score in ranking2:
+            if score != 0:
+                nome = str(self.items_service[connectlist[index]]['nome'])
+                preco = str(self.items_service[connectlist[index]]['preco'])
+                prods.append((nome, preco))
+        if prods:
+            return prods
+        else:
+            return candidatesName
 
 
-print(services)
-# print(data['servicos'])
-# # print searchCategory('quero cortar o cabelo')
+if __name__== '__main__':
+    se = Search('Walmart')
+    print(se.searchCategory('Smart TV LED'))

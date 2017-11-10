@@ -22,178 +22,178 @@
         "id": "4",
         "nome": "Máquinas e  Ferramentas"
       }
-    ],
-    "produtos": [
+    ]},
+    "servicos": [
       {
         "nome": "Rack Quartzo Línea",
         "preco": "319.00",
-        "id": "0"
+        "categoria": "0"
       },
       {
         "nome": "Estante Rack Artely Amarela",
         "preco": "259.00",
-        "id": "0"
+        "categoria": "0"
       },
       {
         "nome": "Mesa para Notebook Artely com 1 Gaveta Amarelo",
         "preco": "229.00",
-        "id": "0"
+        "categoria": "0"
       },
       {
         "nome": "Cômoda 4 Gavetas",
         "preco": "386.00",
-        "id": "0"
+        "categoria": "0"
       },
       {
         "nome": "Sofá Estofado 5 Lugares",
         "preco": "2999.00",
-        "id": "0"
+        "categoria": "0"
       },
       {
         "nome": "Sofá Estofado 6 Lugares Vermelho",
         "preco": "3034.00",
-        "id": "0"
+        "categoria": "0"
       },
       {
         "nome": "Notebook Lenovo IDEAPAD Windows 10",
         "preco": "1479.00",
-        "id": "1"
+        "categoria": "1"
       },
       {
         "nome": "Computador Samsung All in One",
         "preco": "2219.00",
-        "id": "1"
+        "categoria": "1"
       },
       {
         "nome": "Mouse Multilaser Sem Fio",
         "preco": "46.00",
-        "id": "1"
+        "categoria": "1"
       },
       {
         "nome": "Mouse Óptico Xgamer Fire",
         "preco": "59.00",
-        "id": "1"
+        "categoria": "1"
       },
       {
         "nome": "Impressora Multifuncional Epson",
         "preco": "1099.00",
-        "id": "1"
+        "categoria": "1"
       },
       {
         "nome": "Impressora Multifuncional HP Deskjet",
         "preco": "289.00",
-        "id": "1"
+        "categoria": "1"
       },
       {
         "nome": "TABLET MUTILASER PRINCESAS",
         "preco": "419.00",
-        "id": "1"
+        "categoria": "1"
       },
       {
         "nome": "Tablet Disney Frozen TecToy Wi-fi Tela 7' Câmera 2MP Lilás",
         "preco": "1099.00",
-        "id": "1"
+        "categoria": "1"
       },
       {
         "nome": "Roteador Wireless Multilaser 150 Mbps RE058",
         "preco": "79.00",
-        "id": "1"
+        "categoria": "1"
       },
       {
         "nome": "Notebook Samsung Processador i5 Memória Ram 8GB HD 1TB Tela 15.6",
         "preco": "3099.00",
-        "id": "1"
+        "categoria": "1"
       },
       {
         "nome": "Notebook Positivo Stilo Processador Intel Celeron RAM 4GB 32GB",
         "preco": "1399.00",
-        "id": "1"
+        "categoria": "1"
       },
       {
         "nome": "Geladeira 2 Portas 387 Litros",
         "preco": "2239.00",
-        "id": "2"
+        "categoria": "2"
       },
       {
         "nome": "Freezer Horizontal 2 Portas",
         "preco": "1999.00",
-        "id": "2"
+        "categoria": "2"
       },
       {
         "nome": "Ar-Condicionado Split Electrolux",
         "preco": "1929.00",
-        "id": "2"
+        "categoria": "2"
       },
       {
         "nome": "Micro-ondas 32 Litros 900w Classe A",
         "preco": "399.00",
-        "id": "2"
+        "categoria": "2"
       },
       {
         "nome": "Fogão 4 Bocas Consul com Timer Digital Inox",
         "preco": "799.00",
-        "id": "2"
+        "categoria": "2"
       },
       {
         "nome": "Lavadora de Roupas 16kg",
         "preco": "1639.00",
-        "id": "2"
+        "categoria": "2"
       },
       {
         "nome": "Smart TV 32' Samsung LED HD",
         "preco": "1279.00",
-        "id": "2"
+        "categoria": "2"
       },
       {
         "nome": "Telefone Rural 2 Chips Viva-Voz Antena Externa",
         "preco": "379.0",
-        "id": "3"
+        "categoria": "3"
       },
       {
-        "nome": "Smartphone Samsung Galaxy 3G 2 Chips Tela 4.5\" Câmera 5 MP Android",
+        "nome": "Smartphone Samsung Galaxy 3G 2 Chips Tela 4.5\" Câmera 5 MP Androcategoria",
         "preco": "599.00",
-        "id": "3"
+        "categoria": "3"
       },
       {
-        "nome": "Smartphone Motorola Moto G5 4G 2 Chips Tela 5\" Câmera 13MP Frontal 5MP Android 7",
+        "nome": "Smartphone Motorola Moto G5 4G 2 Chips Tela 5\" Câmera 13MP Frontal 5MP Androcategoria 7",
         "preco": "1299.00",
-        "id": "3"
+        "categoria": "3"
       },
       {
         "nome": "Smartphone Oi Positivo Selfie 3G Câmera 8MP",
         "preco": "379.00",
-        "id": "3"
+        "categoria": "3"
       },
       {
         "nome": "Smartphone Samsung Galaxy J7 Prime 4G Tela 5.5",
         "preco": "1359.00",
-        "id": "3"
+        "categoria": "3"
       },
       {
-        "nome": "Smartphone Motorola Moto C Plus  4G  Câmera 8MP Android",
+        "nome": "Smartphone Motorola Moto C Plus  4G  Câmera 8MP Androcategoria",
         "preco": "599.00",
-        "id": "3"
+        "categoria": "3"
       },
       {
         "nome": "Lavadora de Pressão Power Wash Eco Electrolux 1450W",
         "preco": "364.00",
-        "id": "4"
+        "categoria": "4"
       },
       {
         "nome": "Kit Furadeira Impacto  Rotação Máxima 2.800 RPM 110 V",
         "preco": "209.00",
-        "id": "4"
+        "categoria": "4"
       },
       {
         "nome": "Parafusadeira Skil Acionado por Gatilho 110V",
         "preco": "169.00",
-        "id": "4"
+        "categoria": "4"
       },
       {
         "nome": "Mangueira para Jardim Tramontina Poliéster",
         "preco": "56.00",
-        "id": "4"
+        "categoria": "4"
       }
     ]
   }
-}  
+

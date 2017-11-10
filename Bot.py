@@ -15,6 +15,7 @@ from telepot.namedtuple import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboa
 
 class Bot(object):
     def __init__(self, bot):
+        self.__status = None
         self.__precos = se.precos
         self.__users = {}
         self.robot = bot

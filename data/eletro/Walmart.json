@@ -22,7 +22,7 @@
         "id": "4",
         "nome": "Esporte e Lazer"
       }
-    ],
+    ]},
     "servicos": [
       {
         "categoria": "0",
@@ -181,4 +181,3 @@
       }
     ]
   }
-}
