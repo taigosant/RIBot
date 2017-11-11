@@ -26,158 +26,158 @@
     "servicos": [
       {
         "categoria": "0",
-        "nome": "Smart TV LED 55” Ultra HD 4K LG 55UJ6545 com Conversor Digital 4 HDMI 2 USB WebOS 3.5 Wi-Fi integrado",
-        "preco": "R$ 3.599,00"
+        "nome": "Smart TV LED 55” Ultra HD 4K LG 55UJ6545 com Conversor Digital 4 HDMI 2 USB WebOS 35 Wi-Fi integrado",
+        "preco": "3599.00"
       },
       {
         "categoria": "0",
         "nome": "Toca-Discos Pioneer PL990 110V",
-        "preco": "R$ 699,00"
+        "preco": "699.00"
       },
       {
         "categoria": "0",
         "nome": "Micro System Pioneer XHM76 Display LCD 40W CD Radio AM/FM Wi-Fi Bluetooth USB 110V",
-        "preco": "R$ 2.599,00"
+        "preco": "2599.00"
       },
       {
         "categoria": "0",
-        "nome": "Receiver Pionner VSX-530 5.1 Canais 700W 4K Bluetooth 4 HDMI Preto",
-        "preco": "R$ 1.199,00"
+        "nome": "Receiver Pionner VSX-530 51 Canais 700W 4K Bluetooth 4 HDMI Preto",
+        "preco": "1199.00"
       },
       {
         "categoria": "0",
         "nome": "Caixa de Som Portátil TRC 218B Bluetooth 25W Com Iluminação",
-        "preco": "R$  94,00"
+        "preco": "94.00"
       },
       {
         "categoria": "0",
-        "nome": "Smart TV LED 55\" UHD 4K Samsung 55MU6100 com Conversor Digital 3 HDMI 2 USB Wi-Fi Integrado Plataforma Smart Tizen",
-        "preco": "R$  3.589,00"
+        "nome": "Smart TV LED 55 UHD 4K Samsung 55MU6100 com Conversor Digital 3 HDMI 2 USB Wi-Fi Integrado Plataforma Smart Tizen",
+        "preco": " 3589.00"
       },
       {
         "categoria": "1",
         "nome": "Refrigerador Brastemp Ative BRM50NK 429 litros 2 portas Frost Free Platinum",
-        "preco": "R$ 2.798,00"
+        "preco": "2798.00"
       },
       {
         "categoria": "1",
         "nome": "Lavadora de Roupas Electrolux LTD16 16kg Branca 12 Programas de Lavagem",
-        "preco": "R$  1.498,00"
+        "preco": " 1498.00"
       },
       {
         "categoria": "1",
         "nome": "Depurador 60cm de Parede Inox DE60X",
-        "preco": "R$  359,00"
+        "preco": " 359.00"
       },
       {
         "categoria": "1",
         "nome": "Lava-louças Electrolux LE08S 8 Serviços Cinza",
-        "preco": "R$  1.799,90"
+        "preco": " 1799.90"
       },
       {
         "categoria": "1",
         "nome": "Fogão de Embutir com Timer Digital e Relógio (52ERS)",
-        "preco": "R$  1.049,00"
+        "preco": " 1049.00"
       },
       {
         "categoria": "1",
         "nome": "Refrigerador Cycle Defrost 475L Branco DC51",
-        "preco": "R$  1.899,00"
+        "preco": " 1899.00"
       },
       {
         "categoria": "2",
-        "nome": "Notebook Gamer Lenovo Legion Y720, Nvidia GeForce GTX 1060 6GB, i7, 16GB, 1TB + 128GB SSD, W10, Suporte a VR, 15.6\" FHD",
-        "preco": "R$  6.999,00"
+        "nome": "Notebook Gamer Lenovo Legion Y720, Nvidia GeForce GTX 1060 6GB, i7, 16GB, 1TB + 128GB SSD, W10, Suporte a VR, 156\" FHD",
+        "preco": " 6999.00"
       },
       {
         "categoria": "2",
-        "nome": "Impressora HP Deskjet1115 Jato de Tinta Colorida",
-        "preco": "R$  200,89"
+        "nome": "Impressora HP Deskjet Jato de Tinta Colorida",
+        "preco": " 200.89"
       },
       {
         "categoria": "2",
         "nome": "Multifuncional Epson Jato de Tinta Ecotank L455 Colorida",
-        "preco": "R$  1.049,00"
+        "preco": " 1049.00"
       },
       {
         "categoria": "2",
         "nome": "Computador Gamer Neologic Moba Box Intel Core i5-7400 Gtx 1050 8Gb 1Tb - Nli80159",
-        "preco": "R$  2.579,90"
+        "preco": " 2579.90"
       },
       {
         "categoria": "2",
         "nome": "Mac Mini Apple Intel Core i5 Placa de Vídeo Intel HD Graphics 5000 4GB 500GB MGEM2BZ/A macOS Sierra",
-        "preco": "R$  3.499,00"
+        "preco": " 3499.00"
       },
       {
         "categoria": "2",
-        "nome": "Notebook Acer Intel Core i5 7ª Geração 8GB 1TB A515-51-56K6 15.6’’ Windows 10",
-        "preco": "R$  2.099 ,00"
+        "nome": "Notebook Acer Intel Core i5 7ª Geração 8GB 1TB A515-51-56K6 156’’ Windows 10",
+        "preco": " 2099 .00"
       },
       {
         "categoria": "3",
-        "nome": "Smartphone Samsung Galaxy S7 Edge SM-G935F Prata Single Chip Android 6.0 Marshmallow 4G Wi-Fi Câmera Dual Pixel 12MP Octa-Core e API Vulkan",
-        "preco": "R$  2.099,00"
+        "nome": "Smartphone Samsung Galaxy S7 Edge SM-G935F Prata Single Chip Android 60 Marshmallow 4G Wi-Fi Câmera Dual Pixel 12MP Octa-Core e API Vulkan",
+        "preco": " 2099.00"
       },
       {
         "categoria": "3",
         "nome": "Motorola Moto G5 Platinum Tela 5\" Full HD Octa Core 32GB 2GB RAM Câmera traseira 13MP e frontal 5MP XT1672",
-        "preco": "R$  799,00"
+        "preco": " 799.00"
       },
       {
         "categoria": "3",
         "nome": "Telefone sem Fio Motorola Moto700 com Identificador de Chamadas",
-        "preco": "R$  99,90"
+        "preco": " 99.90"
       },
       {
         "categoria": "3",
-        "nome": "Telefone sem Fio TS 40C DECT 6.0, Preto, com Identificador de Chamadas + Ramal - Intelbras",
-        "preco": "R$  159,40"
+        "nome": "Telefone sem Fio TS 40C DECT 60, Preto, com Identificador de Chamadas + Ramal - Intelbras",
+        "preco": " 159.40"
       },
       {
         "categoria": "3",
-        "nome": "Smartphone Moto E4 Plus XT1773 Ouro Dual Chip Android Nougat 7.1.1 4G 16GB",
-        "preco": "R$  699 ,00"
+        "nome": "Smartphone Moto E4 Plus XT1773 Ouro Dual Chip Android Nougat 711 4G 16GB",
+        "preco": " 699.00"
       },
       {
         "categoria": "4",
         "nome": "Kit Ginastica: Colchonete Tornozeleira Halteres Dvd",
-        "preco": "R$  185,90"
+        "preco": " 185.90"
       },
       {
         "categoria": "4",
         "nome": "Par Tornozeleiras com Peso 10 Kg Natural Fitness",
-        "preco": "R$  159,00"
+        "preco": " 159.00"
       },
       {
         "categoria": "4",
         "nome": "Kit Completo 5 Pares Halter De 1 A 5 Kg Suporte Parede",
-        "preco": "R$  399,00"
+        "preco": " 399.00"
       },
       {
         "categoria": "4",
-        "nome": "Piscina Easy Set Intex 3.853 Litros + Bomba Filtro 110v",
-        "preco": "R$ 349,90"
+        "nome": "Piscina Easy Set Intex 3853 Litros + Bomba Filtro 110v",
+        "preco": "349.90"
       },
       {
         "categoria": "4",
-        "nome": "Piscina Estruturada 1.000 Litro",
-        "preco": "R$  89,90"
+        "nome": "Piscina Estruturada 1000 Litro",
+        "preco": " 89.90"
       },
       {
         "categoria": "4",
         "nome": "Carrinho Mesa de Praia em Alumínio Botafogo",
-        "preco": "R$  95,00"
+        "preco": " 95.00"
       },
       {
         "categoria": "4",
         "nome": "Bicicleta Ozark Trail Aro 26 Ararat Branca 21 Marchas Mountain Bike Câmbio Shimano T",
-        "preco": "R$ 579 ,90"
+        "preco": "579.90"
       },
       {
         "categoria": "4",
         "nome": "Kit Ozark Trail Bicicleta Aro 26 Ararat White 21 Marchas Mountain Ciclismo + Mochila de Hidratação CO211 15 Litros Camuflagem Areia",
-        "preco": "R$  678,80"
+        "preco": " 678.80"
       }
     ]
   }

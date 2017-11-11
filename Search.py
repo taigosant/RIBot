@@ -79,11 +79,13 @@ class Search(object):
 
     def searchCategory(self, sentence):
         ranking1 = self.rankingInput(model=self.tfidf_vectorizer, matrix=self.tfidf_matrix, sentence=[sentence])
-        # print ranking1
-        candidates = [x for x, y in ranking1 if y > 0]
-        candidatesName = [item['nome'] for item in self.services if item['id'] in candidates]
-        # print candidatesName
-        connectlist = [index for index, item in enumerate(self.data['servicos']) if item['categoria'] in candidates]
+        # print(ranking1)
+        candidates = [x for x, y in ranking1 if y > 0.00]
+        # print(candidates)
+        candidatesName = [item['nome'] for item in self.services if int(item['id']) in candidates]
+        # print(self.services)
+        # print(candidatesName)
+        connectlist = [index for index, item in enumerate(self.data['servicos']) if int(item['categoria']) in candidates]
         prodFilter = self.tfidf_items_matrix.todense()[[connectlist]]
         ranking2 = self.rankingInput(model=self.tfidf_items, matrix=prodFilter, sentence=[sentence])
         prods = []
@@ -100,4 +102,4 @@ class Search(object):
 
 if __name__== '__main__':
     se = Search('Walmart')
-    print(se.searchCategory('Smart TV LED'))
+    print(se.searchCategory('quero uma TV'))

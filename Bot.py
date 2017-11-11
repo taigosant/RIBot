@@ -15,18 +15,16 @@ from telepot.namedtuple import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboa
 
 class Bot(object):
     def __init__(self, bot):
-        self.__status = None
-        self.__precos = se.precos
+        self.places = ['Walmart', 'Casas Bahia', 'Bemol', 'Salao Top', 'Salao Rainha', 'Salao Sempre Bela']
+        self.__search = None
+        self.__precos = {}
         self.__users = {}
         self.robot = bot
         self.re_greetings = ["yay", "Ola!! Deseja pedir algo?", "oie, deseja alguma coisa?"]
-        self.place = se.data['loja']['nome']
+        # self.place = se.data['loja']['nome']
         self.__categorias= {}
         # print(self.__categorias)
 
-        for item in se.services:
-            self.__categorias[item['nome']] = item['id']
-        print(self.__categorias['cabelo'])
         with open('greeting.txt', 'r') as f:
             self.greetings = f.read()
         f.close()
@@ -41,19 +39,23 @@ class Bot(object):
     # In[ ]:
     def catalogo(self,chatID, key =None):
         if key is not None:
-            for item in se.services:
+            for item in self.__search.services:
                 if item['id'] == key:
                     categoria = item['nome']
                     break
 
             produtos = []
-            for x in se.data['servicos']:
+            for x in self.__search.data['servicos']:
                 if x['categoria'] == key:
-                    produtos.append((x['nome'], x['preco']))
+                    if len(x['nome'].split(" ")) > 4:
+                        nome = " ".join(x['nome'].split()[:3])
+                    else:
+                        nome = x['nome']
+                    produtos.append((nome, x['preco']))
+            # print(produtos)
 
             sent = self.robot.sendMessage(chatID, "Categoria: " + categoria, reply_markup=InlineKeyboardMarkup(inline_keyboard=[
-                [InlineKeyboardButton(text=prod + "; Preço: " + preco, callback_data=prod)] for prod, preco in
-                produtos]))
+                [InlineKeyboardButton(text=prod + "; Preço: " + preco, callback_data=prod)] for prod, preco in produtos]))
         else:
             sent = self.robot.sendMessage(chatID, "Este é o nosso Menu ;) ", reply_markup=InlineKeyboardMarkup(inline_keyboard=[
                 [InlineKeyboardButton(text=category, callback_data=category)] for category in self.__categorias.keys()]))
@@ -131,12 +133,8 @@ class Bot(object):
     def commands(self, chatID, msg):
         name = msg['chat']['first_name']
         sentence = msg['text']
-        if sentence == '/start':
-            # self.robot.sendMessage(chatID, "oi")
-            toSend = 'Ola ' + name + ". " + "Estou atendendo pelx " + self.place + ". Voce pode fazer um pedido, ver o /catalogo ou ver a lista de comandos digitando / "
-            self.robot.sendMessage(chatID, toSend)
 
-        elif sentence == '/total':
+        if sentence == '/total':
             self.total(chatID)
         elif sentence == '/remover':
             self.remover(chatID)
@@ -152,7 +150,7 @@ class Bot(object):
         prods = None
         sent = None
         try:
-            prods = se.searchCategory(sentence)
+            prods = self.__search.searchCategory(sentence)
         except:
             self.robot.sendMessage(chatID,"Desculpe, não consegui entender.")
         if prods:
@@ -174,24 +172,37 @@ class Bot(object):
     def recebendoMsg(self, msg):
         name = msg['chat']['first_name']
         sentence = str(msg['text'].lower())
-        print(sentence,name)
+        print(sentence, name)
         tipoMsg, tipoChat, chatID = telepot.glance(msg)
         if chatID not in self.__users.keys():
-            self.__users[chatID] = {'nome': name, 'pedido': []}
+            self.__users[chatID] = {'nome': name, 'pedido': [], 'status': 0}
 
-        if sentence in self.greetings:
-            send = random.choice(self.re_greetings)
-            self.robot.sendMessage(chatID,send)
-        elif sentence == 'sim :)':
-            self.addProdFinal(chatID)
-        elif sentence == "sim ( ͡~ ͜ʖ ͡°)":
-            self.encerraFinal(chatID)
-        elif sentence == 'nao':
-            self.robot.sendMessage(chatID, "Okay, Voce pode pedir outra coisa se quiser.")
-        elif sentence.startswith('/'):
-            self.commands(chatID, msg)
+        if self.__users[chatID]['status'] == 0:
+            if sentence == '/start':
+                toSend = 'Ola ' + name + ". " + "Estou trabalhando com os seguintes estabelecimentos, Voce pode escolher o estabelicimento que lhe interessar ;) "
+                self.robot.sendMessage(chatID, toSend)
+                sent = self.robot.sendMessage(chatID, "Escolha um por favor",
+                                              reply_markup=InlineKeyboardMarkup(inline_keyboard=[
+                                                  [InlineKeyboardButton(text=place, callback_data=place)]
+                                                  for place in self.places]))
+            else:
+                toSend = "Escolha um estabelicimento para começar por favor"
+                self.robot.sendMessage(chatID, toSend)
+
         else:
-            self.pedido(chatID, sentence)
+            if sentence in self.greetings:
+                send = random.choice(self.re_greetings)
+                self.robot.sendMessage(chatID,send)
+            elif sentence == 'sim :)':
+                self.addProdFinal(chatID)
+            elif sentence == "sim ( ͡~ ͜ʖ ͡°)":
+                self.encerraFinal(chatID)
+            elif sentence == 'nao':
+                self.robot.sendMessage(chatID, "Okay, Voce pode pedir outra coisa se quiser.")
+            elif sentence.startswith('/'):
+                self.commands(chatID, msg)
+            else:
+                self.pedido(chatID, sentence)
 
 
     def crawlingback(self, msg):
@@ -199,6 +210,28 @@ class Bot(object):
         query_id, from_id, query_data = telepot.glance(msg, flavor='callback_query')
         chatID = msg['from']['id']
         # message_id = msg['message']['message_id']
+        if self.__users[chatID]['status'] == 0:
+            if query_data in self.places:
+                self.__users[chatID]['status'] = 1
+                self.robot.answerCallbackQuery(query_id, text='entrando..')
+                self.__search = se.Search(query_data)
+                self.robot.sendMessage(chatID,"Agora estou atendendo pelx " + query_data + ". Voce pode fazer um pedido, ver o /catalogo ou ver a lista de comandos digitando / ")
+                for item in self.__search.services:
+                    # print(self.__search.services)
+                    if len(item['nome'].split()) > 4:
+                        nome = " ".join(item['nome'].split()[:3])
+                    else:
+                        nome = item['nome']
+
+                    self.__categorias[nome] = item['id']
+                for item in self.__search.data['servicos']:
+                    if len(item['nome'].split()) > 4:
+                        nome = " ".join(item['nome'].split()[:3])
+                    else:
+                        nome = item['nome']
+                    self.__precos[nome] = item['preco']
+
+
         if query_data.startswith('remover'):
             toberemoved = query_data.replace('remover','')
             self.remover(chatID, toberemoved)
