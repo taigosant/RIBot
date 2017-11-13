@@ -79,20 +79,21 @@ class Search(object):
 
     def searchCategory(self, sentence):
         ranking1 = self.rankingInput(model=self.tfidf_vectorizer, matrix=self.tfidf_matrix, sentence=[sentence])
-        # print(ranking1)
-        candidates = [x for x, y in ranking1 if y > 0.00]
+        print(ranking1)
+        candidates = [x for x, y in ranking1 if y > 0]
         # print(candidates)
         candidatesName = [item['nome'] for item in self.services if int(item['id']) in candidates]
         # print(self.services)
         # print(candidatesName)
         connectlist = [index for index, item in enumerate(self.data['servicos']) if int(item['categoria']) in candidates]
         prodFilter = self.tfidf_items_matrix.todense()[[connectlist]]
-        ranking2 = self.rankingInput(model=self.tfidf_items, matrix=prodFilter, sentence=[sentence])
+        ranking2 = self.rankingInput(model=self.tfidf_items, matrix=self.tfidf_items_matrix, sentence=[sentence])
+        print(ranking2)
         prods = []
         for index, score in ranking2:
-            if score != 0:
-                nome = str(self.items_service[connectlist[index]]['nome'])
-                preco = str(self.items_service[connectlist[index]]['preco'])
+            if score != 0.0:
+                nome = str(self.items_service[index]['nome'])
+                preco = str(self.items_service[index]['preco'])
                 prods.append((nome, preco))
         if prods:
             return prods
@@ -101,5 +102,5 @@ class Search(object):
 
 
 if __name__== '__main__':
-    se = Search('Walmart')
-    print(se.searchCategory('quero uma TV'))
+    se = Search('Bemol')
+    print(se.searchCategory('quero um notebook'))

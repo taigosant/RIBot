@@ -10,7 +10,7 @@ from telepot.loop import MessageLoop
 import telepot
 import random
 import Search as se
-from telepot.namedtuple import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
+from telepot.namedtuple import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardRemove
 
 
 class Bot(object):
@@ -48,7 +48,7 @@ class Bot(object):
             for x in self.__search.data['servicos']:
                 if x['categoria'] == key:
                     if len(x['nome'].split(" ")) > 4:
-                        nome = " ".join(x['nome'].split()[:3])
+                        nome = " ".join(x['nome'].split()[:4])
                     else:
                         nome = x['nome']
                     produtos.append((nome, x['preco']))
@@ -66,6 +66,7 @@ class Bot(object):
     def encerraPedido(self,chatID):
         total = 0
         if self.__users[chatID]['pedido']:
+            self.__users[chatID]['status'] = 3
             for i in range(0, len(self.__users[chatID]['pedido'])):
                 total += float(self.__precos[self.__users[chatID]['pedido'][i]])
             pedido = ", ".join(self.__users[chatID]['pedido'])
@@ -78,15 +79,18 @@ class Bot(object):
             self._keyboard_msg_ident = telepot.message_identifier(sent)
         else:
             self.robot.sendMessage(chatID, "Ainda não há nenhum pedido :c ")
+            self.__users[chatID]['status'] = 1
 
     def encerraFinal(self, chatID):
         print("nome:" + self.__users[chatID]['nome']+"\n Pedido: "+ str(self.__users[chatID]['pedido']))
         self.__users[chatID]['pedido'] = []
         self.robot.deleteMessage(self._keyboard_msg_ident)
-        self.robot.sendMessage(chatID, "Muito obrigado, seu pedido foi encaminhado com sucesso :D, pode pedir o que mais desejar <3")
+        self.robot.sendMessage(chatID, "Muito obrigado, seu pedido foi encaminhado com sucesso :D, pode pedir o que mais desejar <3", reply_markup=ReplyKeyboardRemove(remove_keyboard=True))
+        self.__users[chatID]['status'] = 1
 
 
     def addProdConfirmation(self,chatID, prod):
+        self.__users[chatID]['status'] = 2
         sent = self.robot.sendMessage(chatID, 'Deseja adicionar '+prod+' ao pedido?', reply_markup=ReplyKeyboardMarkup(keyboard=[
             [KeyboardButton(text="sim :)"), KeyboardButton(text="nao")]], one_time_keyboard=True))
         self.__users[chatID]['temporaryProd'] = prod
@@ -94,6 +98,7 @@ class Bot(object):
         # self._editor = telepot.helper.Editor(self.robot, self._keyboard_msg_ident)
 
     def addProdFinal(self,chatID):
+        self.__users[chatID]['status'] = 1
         self.__users[chatID]['pedido'].append(self.__users[chatID]['temporaryProd'])
         self.__users[chatID]['temporaryProd'] = ''
         self.robot.deleteMessage(self._keyboard_msg_ident)
@@ -154,6 +159,11 @@ class Bot(object):
         except:
             self.robot.sendMessage(chatID,"Desculpe, não consegui entender.")
         if prods:
+            for i in range(0,len(prods)):
+                if len(prods[i][0].split()) > 4:
+                    nome = " ".join(prods[i][0].split()[:4])
+                    prods[i] = (nome,prods[i][1])
+            # print(prods)
             try:
                 sent = self.robot.sendMessage(chatID, "Achei estes produtos, deseja algum?",
                                          reply_markup=InlineKeyboardMarkup(inline_keyboard=[
@@ -163,6 +173,8 @@ class Bot(object):
                 sent = self.robot.sendMessage(chatID, "Temos estas categorias: ",
                                          reply_markup=InlineKeyboardMarkup(inline_keyboard=[
                                                [InlineKeyboardButton(text=prod, callback_data=prod)] for prod in prods]))
+        else:
+            self.robot.sendMessage(chatID, "Desculpe, não temos este serviço/produto D:")
 
 
         if sent:
@@ -189,20 +201,32 @@ class Bot(object):
                 toSend = "Escolha um estabelicimento para começar por favor"
                 self.robot.sendMessage(chatID, toSend)
 
-        else:
+        elif self.__users[chatID]['status'] == 1:
             if sentence in self.greetings:
                 send = random.choice(self.re_greetings)
                 self.robot.sendMessage(chatID,send)
-            elif sentence == 'sim :)':
-                self.addProdFinal(chatID)
-            elif sentence == "sim ( ͡~ ͜ʖ ͡°)":
-                self.encerraFinal(chatID)
-            elif sentence == 'nao':
-                self.robot.sendMessage(chatID, "Okay, Voce pode pedir outra coisa se quiser.")
             elif sentence.startswith('/'):
                 self.commands(chatID, msg)
             else:
                 self.pedido(chatID, sentence)
+        elif self.__users[chatID]['status'] == 2:
+            if sentence in ['sim :)','sim', 'si', 'yes', 'quero']:
+                self.addProdFinal(chatID)
+            elif sentence in ['não', 'nao', 'no']:
+                self.__users[chatID]['status'] = 1
+                self.robot.sendMessage(chatID, "Okay, Voce pode pedir outra coisa se quiser.", reply_markup=ReplyKeyboardRemove(remove_keyboard=True))
+            else:
+                self.robot.sendMessage(chatID, "Por favor, escolha uma opção..")
+        elif self.__users[chatID]['status'] == 3:
+            if sentence in ['sim ( ͡~ ͜ʖ ͡°)', 'sim :)', 'sim', 'si', 'yes']:
+                self.encerraFinal(chatID)
+            elif sentence in ['não', 'nao', 'no']:
+                self.__users[chatID]['status'] = 1
+                self.robot.sendMessage(chatID, "Okay, Voce continuar fazendo seu pedido ;)", reply_markup=ReplyKeyboardRemove(remove_keyboard=True))
+            else:
+                self.robot.sendMessage(chatID, "Por favor, escolha uma opção..")
+
+
 
 
     def crawlingback(self, msg):
@@ -219,37 +243,30 @@ class Bot(object):
                 for item in self.__search.services:
                     # print(self.__search.services)
                     if len(item['nome'].split()) > 4:
-                        nome = " ".join(item['nome'].split()[:3])
+                        nome = " ".join(item['nome'].split()[:4])
                     else:
                         nome = item['nome']
-
                     self.__categorias[nome] = item['id']
+
+
                 for item in self.__search.data['servicos']:
                     if len(item['nome'].split()) > 4:
-                        nome = " ".join(item['nome'].split()[:3])
+                        nome = " ".join(item['nome'].split()[:4])
                     else:
                         nome = item['nome']
                     self.__precos[nome] = item['preco']
-
-
-        if query_data.startswith('remover'):
-            toberemoved = query_data.replace('remover','')
-            self.remover(chatID, toberemoved)
-            self.robot.answerCallbackQuery(query_id, text='removendo..')
-            self._editor.editMessageReplyMarkup(reply_markup=None)
-            self._editor.editMessageText(text="removido com sucesso :D")
-        elif query_data in self.__categorias.keys():
-            self.catalogo(chatID, self.__categorias[query_data])
-            # self._editor.editMessageReplyMarkup(reply_markup=None)
+        elif self.__users[chatID]['status'] == 1:
+            if query_data.startswith('remover'):
+                toberemoved = query_data.replace('remover','')
+                self.remover(chatID, toberemoved)
+                self.robot.answerCallbackQuery(query_id, text='removendo..')
+                self._editor.editMessageReplyMarkup(reply_markup=None)
+                self._editor.editMessageText(text="removido com sucesso :D")
+            elif query_data in self.__categorias.keys():
+                self.catalogo(chatID, self.__categorias[query_data])
+                # self._editor.editMessageReplyMarkup(reply_markup=None)
+            else:
+                self._editor.editMessageReplyMarkup(reply_markup=None)
+                self.addProdConfirmation(chatID, query_data)
         else:
-            self._editor.editMessageReplyMarkup(reply_markup=None)
-            self.addProdConfirmation(chatID, query_data)
-
-        # __users[chatID].append(query_data)
-        # print(__users[chatID])
-        # self.robot.answerCallbackQuery(query_id, text='adicionado ao pedido')
-        # self._editor.editMessageReplyMarkup(reply_markup=None)
-        # self._editor.editMessageText(text="produto adicionado ao pedido :D, você pode usar /total para ver o pedido atual ou /remover se desejar retirar algum produto ;)")
-        # self.robot.sendMessage(chatID, "Muito obrigado :D, pode pedir o que mais desejar <3")
-        # confirmarpedido(chatID)
-
+            self.robot.answerCallbackQuery(query_id, text='...')
