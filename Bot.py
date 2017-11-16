@@ -8,6 +8,7 @@
 import nltk
 from telepot.loop import MessageLoop
 import telepot
+import time
 import random
 import Search as se
 from telepot.namedtuple import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardRemove
@@ -84,19 +85,26 @@ class Bot(object):
             self.__users[chatID]['status'] = 1
 
     def encerraFinal(self, chatID):
+        self.__users[chatID]['end'] = time.time()
         print("nome:" + self.__users[chatID]['nome']+"\n Pedido: "+ str(self.__users[chatID]['pedido']))
         self.__users[chatID]['pedido'] = []
         self.robot.deleteMessage(self._keyboard_msg_ident[chatID])
         self.robot.sendMessage(chatID, "Muito obrigado, seu pedido foi encaminhado com sucesso :D, pode pedir o que mais desejar <3", reply_markup=ReplyKeyboardRemove(remove_keyboard=True))
+        time_spent = format(self.__users[chatID]['end']-self.__users[chatID]['start'],'.2f')
+        self.robot.sendMessage(chatID, "Tempo de atendimento: "+ time_spent)
         self.__users[chatID]['status'] = 1
+
 
 
     def addProdConfirmation(self,chatID, prod):
         self.__users[chatID]['status'] = 2
+        if 'TV' in prod.split():
+            self.robot.sendPhoto(chatID,open('tv.jpg','rb'), prod)
         sent = self.robot.sendMessage(chatID, 'Deseja adicionar '+prod+' ao pedido?', reply_markup=ReplyKeyboardMarkup(keyboard=[
             [KeyboardButton(text="sim :)"), KeyboardButton(text="nao")]], one_time_keyboard=True))
         self.__users[chatID]['temporaryProd'] = prod
         self._keyboard_msg_ident[chatID] = telepot.message_identifier(sent)
+
         # self._editor[chatID] = telepot.helper.Editor(self.robot, self._keyboard_msg_ident[chatID)
 
     def addProdFinal(self,chatID):
@@ -112,9 +120,9 @@ class Bot(object):
         self.__categorias[chatID] = {}
         self.__users[chatID]['pedido'] = []
         if name != '':
-            toSend = 'Ola ' + name + ". " + "Estou trabalhando com os seguintes estabelecimentos, Voce pode escolher o estabelicimento que lhe interessar ;) "
+            toSend = 'Ola ' + name + ". " + "Estou trabalhando com os seguintes estabelecimentos, Voce pode escolher o estabelecimento que lhe interessar ;) "
         else:
-            toSend = "Hello Again. Estou trabalhando com os seguintes estabelecimentos, Voce pode escolher o estabelicimento que lhe interessar ;) "
+            toSend = "Hello Again. Estou trabalhando com os seguintes estabelecimentos, Voce pode escolher o estabelecimento que lhe interessar ;) "
 
         self.robot.sendMessage(chatID, toSend)
         sent = self.robot.sendMessage(chatID, "Escolha um",
@@ -199,6 +207,20 @@ class Bot(object):
             self._keyboard_msg_ident[chatID] = telepot.message_identifier(sent)
             self._editor[chatID] = telepot.helper.Editor(self.robot, self._keyboard_msg_ident[chatID])
 
+    def parser(self,chatID, sentence):
+        if 'remover' in sentence.split():
+            self.remover(chatID,'')
+        elif 'total' in sentence.split():
+            self.total(chatID)
+        elif 'confirmar' in sentence.split() or 'encerrar' in sentence.split():
+            self.encerraPedido(chatID)
+        elif 'menu' in sentence.split() or 'catalogo' in sentence.split():
+            self.catalogo(chatID)
+        else:
+            self.pedido(chatID,sentence)
+
+
+
     def recebendoMsg(self, msg):
         name = msg['chat']['first_name']
         sentence = str(msg['text'].lower())
@@ -222,8 +244,10 @@ class Bot(object):
                 self.robot.sendMessage(chatID,send)
             elif sentence.startswith('/'):
                 self.commands(chatID, msg)
+            elif sentence in ['não', 'nao', 'no']:
+                self.robot.sendMessage(chatID, "Okay, Voce pode pedir outra coisa se quiser.")
             else:
-                self.pedido(chatID, sentence)
+                self.parser(chatID,sentence)
         elif self.__users[chatID]['status'] == 2:
             if sentence in ['sim :)','sim', 'si', 'yes', 'quero']:
                 self.addProdFinal(chatID)
@@ -252,6 +276,7 @@ class Bot(object):
         if self.__users[chatID]['status'] == 0:
             if query_data in self.places:
                 self.__users[chatID]['status'] = 1
+                self.__users[chatID]['start'] = time.time()
                 self.robot.answerCallbackQuery(query_id, text='entrando..')
                 self.__search[chatID] = se.Search(query_data)
                 self.robot.sendMessage(chatID,"Agora estou atendendo pelx " + query_data + ". Voce pode fazer um pedido, ver o /catalogo ou ver a lista de comandos digitando / ")
